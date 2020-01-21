@@ -1,7 +1,13 @@
 // creat click event to start timer and quiz
 
+
+var startButton = document.getElementById('start')
+var questions = document.getElementById('questions')
+var qAnswers = document.getElementById('answers')
+var submitButton = document.getElementById('submit')
 var clockRunning = false
-var timer = 30
+var clock = 30
+var timer = document.getElementById('timer')
 var allQuestions = [
     {
         question: "What does Rick's catchphrase 'wubba lubba dub dub' mean?",
@@ -10,7 +16,7 @@ var allQuestions = [
             "I'm in great pain",
             "Let's party!"
         ],
-        correctAnswer: 2
+        correctAnswer: 1
     },
     {
         question: "What is the name of Morty's crush?",
@@ -19,7 +25,7 @@ var allQuestions = [
             "Heather",
             "Summer"
         ],
-        correctAnswer: 1
+        correctAnswer: 0
     },
     {
         question: "What vegetable did Rick famously turn himself into?",
@@ -28,7 +34,7 @@ var allQuestions = [
             "Tomato",
             "Pickle"
         ],
-        correctAnswer: 3
+        correctAnswer: 2
     },
     {
         question: "Who killed bird person?",
@@ -37,7 +43,7 @@ var allQuestions = [
             "Beth",
             "Summer"
         ],
-        correctAnswer: 1
+        correctAnswer: 0
     },
     {
         question: "Which theme park ride was Rick's idea for anatomy park?",
@@ -46,7 +52,7 @@ var allQuestions = [
             "Spleen Mountain",
             "Pirates of the Pancreas"
         ],
-        correctAnswer: 3
+        correctAnswer: 2
     },
     {
         question: "You son of a b****...",
@@ -55,7 +61,7 @@ var allQuestions = [
             "You got me",
             "I'm in"
         ],
-        correctAnswer: 3
+        correctAnswer: 2
     },
     {
         question: "What is the name of the epic movie with gladiator grandmas and giant cat monsters?",
@@ -63,7 +69,7 @@ var allQuestions = [
             "Jetpack Grandmas",
             "Two Brothers...?",
             "Space Wars"],
-        correctAnswer: 2
+        correctAnswer: 1
     },
     {
         question: "Umm, okay last one. Just make like 5 three-pointers and we're good",
@@ -72,24 +78,42 @@ var allQuestions = [
             "4 three-pointers",
             "5 three-pointers"
         ],
-        correctAnswer: 3
+        correctAnswer: 2
     },
 ]
 
-$("#start").on("click", startQuiz)
+$("#start").on("click", startQuiz) 
+
 
 
 function startQuiz() {
 
-}
+    for(i = 0; i < allQuestions.length; i++) {
+        console.log(allQuestions[i]);
+            // assign questions/answers to respective html
+    };
 
-// create questions to show up on button click
+    var timerId = setInterval(countdown, 1000);
+    function countdown(){
+        if (clock == 0) {
+            clearTimeout(timerId);
+            showResults();
+        } else {
+            timer.innerHTML = 'Timer: ' + clock;
+            clock--;
+        }
+    }
+    
+}
 
 // creat logic for if the correct/incorrect answer was chosen
 
 // show ending results after timer finishes or "done" button is selected
 
-function showResults() {}
+function showResults() {
+
+
+}
 
 
 submitButton.addEventListener('click', showResults);
